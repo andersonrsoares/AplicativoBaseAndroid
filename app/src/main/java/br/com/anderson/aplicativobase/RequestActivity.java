@@ -84,7 +84,9 @@ public class RequestActivity extends AppCompatActivity {
                 .create();
 
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
-                .connectTimeout(10000, TimeUnit.MILLISECONDS)
+                .connectTimeout(1000, TimeUnit.MILLISECONDS)
+                .readTimeout(5000, TimeUnit.MILLISECONDS)
+                .writeTimeout(30000, TimeUnit.MILLISECONDS)
                 .build();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.myjson.com/")
