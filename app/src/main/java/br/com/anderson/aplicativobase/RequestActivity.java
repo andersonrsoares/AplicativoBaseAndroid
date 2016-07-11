@@ -1,6 +1,7 @@
 package br.com.anderson.aplicativobase;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -19,11 +20,24 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public class RequestActivity extends AppCompatActivity {
 
@@ -43,7 +57,8 @@ public class RequestActivity extends AppCompatActivity {
       button.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-                requesTaskGet();
+                //requesTaskGet();
+              requestRetrofit();
           }
       });
 
@@ -55,6 +70,71 @@ public class RequestActivity extends AppCompatActivity {
                 requesVolleyGet();
             }
         });
+    }
+
+
+    public void requestRetrofit(){
+//        final ProgressDialog dialog = new ProgressDialog(this);
+//        dialog.setCancelable(false);
+//        dialog.setMessage("Buscando dados...");
+//        dialog.show();
+
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                .create();
+
+        OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+                .connectTimeout(10000, TimeUnit.MILLISECONDS)
+                .build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.myjson.com/")
+                .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        RequestInterfaceEstado request = retrofit.create(RequestInterfaceEstado.class);
+
+
+        Call<EstadoRequest> call = request.getEstados();
+
+        call.enqueue(new CustomCallback<EstadoRequest>(this, new CustomCallback.OnResponse<EstadoRequest>() {
+            @Override
+            public void onResponse(EstadoRequest response) {
+                Log.d("return", response.toString());
+                textView.setText(response.toString());
+               // dialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.d("return", t.getLocalizedMessage());
+                textView.setText(t.getLocalizedMessage());
+              //  dialog.dismiss();
+            }
+
+            @Override
+            public void onRetry(Throwable t) {
+                Log.d("return", t.getLocalizedMessage());
+                textView.setText(t.getLocalizedMessage());
+                requestRetrofit();
+            }
+        }));
+//        call.enqueue(new Callback<EstadoRequest>() {
+//            @Override
+//            public void onResponse(Call<EstadoRequest> call, retrofit2.Response<EstadoRequest> response) {
+//                Log.d("return", response.body().toString());
+//                textView.setText(response.body().toString());
+//                dialog.dismiss();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<EstadoRequest> call, Throwable t) {
+//                Log.d("return", t.getLocalizedMessage());
+//                textView.setText(t.getLocalizedMessage());
+//                dialog.dismiss();
+//            }
+//        });
+
     }
 
 
@@ -72,7 +152,7 @@ public class RequestActivity extends AppCompatActivity {
                 textView.setText(message);
             }
         },"GET");
-        requestTask.execute("http://easysuport.devmaker.com.br/webservice/get/order/1/3/1");
+        requestTask.execute("https://maps.googleapis.com/maps/api/geocode/json?latlng=1,1");
     }
 
     public void requesVolleyGet(){
@@ -81,7 +161,7 @@ public class RequestActivity extends AppCompatActivity {
         dialog.setMessage("Buscando dados...");
         dialog.show();
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://easysuport.devmaker.com.br/webservice/get/order/1/3/1",
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "https://api.myjson.com/bins/44pyf",
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -101,6 +181,12 @@ public class RequestActivity extends AppCompatActivity {
         request.setRetryPolicy(new DefaultRetryPolicy(1000 * 15, 0, 1f));
         Volley.newRequestQueue(this).add(request);
     }
+
+    private interface RequestInterfaceEstado{
+        @GET("bins/44pyf")
+        Call<EstadoRequest> getEstados();
+    }
+
 
 
 

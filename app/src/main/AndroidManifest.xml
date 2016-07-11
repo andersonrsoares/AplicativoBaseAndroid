@@ -20,7 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RequestActivity"></activity>
+        <activity android:name=".RequestActivity" />
+        <activity android:name=".ListViewActivity" />
+        <activity android:name=".RecycleViewActivity"></activity>
     </application>
 
 </manifest>

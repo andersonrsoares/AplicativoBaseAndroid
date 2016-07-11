@@ -41,7 +41,8 @@ public class RequestTask extends AsyncTask<String, String, JSONObject> {
     public HashMap<String,String> getHeaders(){
         HashMap<String,String> headers = new HashMap<>();
         headers.put("Accept", "application/json");
-        headers.put("Content-Type", "application/x-www-form-urlencoded;");
+        headers.put("Content-Type", "application/json");
+        //"application/x-www-form-urlencoded;"
         headers.put("charset", "UTF-8");
         return headers;
     }
@@ -106,12 +107,16 @@ public class RequestTask extends AsyncTask<String, String, JSONObject> {
             URL url = new URL(request);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoOutput(true);
-            connection.setDoInput(true);
             connection.setInstanceFollowRedirects(false);
             connection.setRequestMethod(method);
 
+            if(method.equalsIgnoreCase("GET"))
+                connection.setDoInput(true);
+
             for (Map.Entry<String, String> entry : getHeaders().entrySet()) {
-                connection.setRequestProperty(entry.getKey(),entry.getValue());
+                String key = entry.getKey();
+                String value = entry.getValue();
+                connection.setRequestProperty(key,value);
             }
 
             connection.setUseCaches(false);
