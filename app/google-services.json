@@ -1,0 +1,164 @@
+{
+  "project_info": {
+    "project_number": "1020884024809",
+    "firebase_url": "https://testefirebase-6bded.firebaseio.com",
+    "project_id": "testefirebase-6bded",
+    "storage_bucket": "testefirebase-6bded.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020884024809:android:e0bab45d9f7abc70",
+        "android_client_info": {
+          "package_name": "br.com.devmker.firebaseteste"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020884024809-dojiiebuhat4ve0buetli9agq0l20ffi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.devmker.firebaseteste",
+            "certificate_hash": "991DDDC90C03859D8DE88A710E7FCD9B9AF96FE3"
+          }
+        },
+        {
+          "client_id": "1020884024809-scoe5qh4muhrvfj1c1ma6bq3f84olavc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMVsO_ca6WHvdmbR1I4MyH1ZaItwKvQVg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020884024809-p5va2qtroaf46orb5q3vgo7e3vc2tdl3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.andersonsoares.TesteFCM"
+              }
+            },
+            {
+              "client_id": "1020884024809-scoe5qh4muhrvfj1c1ma6bq3f84olavc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020884024809:android:07b236ce6d6b2790",
+        "android_client_info": {
+          "package_name": "br.com.anderson.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020884024809-pric0uqvlb5guhpo68jfqp9d9vs86d8m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.anderson.firebase",
+            "certificate_hash": "991DDDC90C03859D8DE88A710E7FCD9B9AF96FE3"
+          }
+        },
+        {
+          "client_id": "1020884024809-scoe5qh4muhrvfj1c1ma6bq3f84olavc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMVsO_ca6WHvdmbR1I4MyH1ZaItwKvQVg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020884024809-p5va2qtroaf46orb5q3vgo7e3vc2tdl3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.andersonsoares.TesteFCM"
+              }
+            },
+            {
+              "client_id": "1020884024809-scoe5qh4muhrvfj1c1ma6bq3f84olavc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020884024809:android:0cad20fad9a00ec1",
+        "android_client_info": {
+          "package_name": "br.com.anderson.aplicativobase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020884024809-ssmag4285av8guocbr1622ijdrlc8s28.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.anderson.aplicativobase",
+            "certificate_hash": "991DDDC90C03859D8DE88A710E7FCD9B9AF96FE3"
+          }
+        },
+        {
+          "client_id": "1020884024809-scoe5qh4muhrvfj1c1ma6bq3f84olavc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMVsO_ca6WHvdmbR1I4MyH1ZaItwKvQVg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020884024809-p5va2qtroaf46orb5q3vgo7e3vc2tdl3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.andersonsoares.TesteFCM"
+              }
+            },
+            {
+              "client_id": "1020884024809-scoe5qh4muhrvfj1c1ma6bq3f84olavc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

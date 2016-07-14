@@ -110,14 +110,14 @@ public class RequestTask extends AsyncTask<String, String, JSONObject> {
             connection.setInstanceFollowRedirects(false);
             connection.setRequestMethod(method);
 
-            if(method.equalsIgnoreCase("GET"))
+            if(!method.equalsIgnoreCase("GET"))
                 connection.setDoInput(true);
-
-            for (Map.Entry<String, String> entry : getHeaders().entrySet()) {
-                String key = entry.getKey();
-                String value = entry.getValue();
-                connection.setRequestProperty(key,value);
-            }
+//
+//            for (Map.Entry<String, String> entry : getHeaders().entrySet()) {
+//                String key = entry.getKey();
+//                String value = entry.getValue();
+//                connection.setRequestProperty(key,value);
+//            }
 
             connection.setUseCaches(false);
             String datasend= body();

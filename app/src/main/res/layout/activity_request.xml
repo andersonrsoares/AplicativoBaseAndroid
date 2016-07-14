@@ -28,6 +28,12 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Request Retrofit GET"
+            android:id="@+id/buttonretrofittaskget" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Request TASK GET"
             android:id="@+id/buttonrequesttaskget" />
 

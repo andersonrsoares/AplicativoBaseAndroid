@@ -57,12 +57,20 @@ public class RequestActivity extends AppCompatActivity {
       button.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-                //requesTaskGet();
-              requestRetrofit();
+                requesTaskGet();
+             // requestRetrofit();
           }
       });
 
 
+        Button button3 = (Button) findViewById(R.id.buttonretrofittaskget);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //requesTaskGet();
+                requestRetrofit();
+            }
+        });
         Button button2 = (Button) findViewById(R.id.buttonrequestvolleyget);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,14 +88,30 @@ public class RequestActivity extends AppCompatActivity {
 //        dialog.show();
 
         Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+              //  .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
                 .create();
+
+
+            //add key
+        Interceptor interceptor = new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                okhttp3.Request request = chain.request().newBuilder()
+                        .addHeader("key", "xxx")
+                        .build();
+                return chain.proceed( request );
+            }
+        };
+
 
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
                 .connectTimeout(1000, TimeUnit.MILLISECONDS)
                 .readTimeout(5000, TimeUnit.MILLISECONDS)
                 .writeTimeout(30000, TimeUnit.MILLISECONDS)
                 .build();
+
+
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.myjson.com/")
                 .client(okHttpClient)
@@ -98,7 +122,6 @@ public class RequestActivity extends AppCompatActivity {
 
 
         Call<EstadoRequest> call = request.getEstados();
-
         call.enqueue(new CustomCallback<EstadoRequest>(this, new CustomCallback.OnResponse<EstadoRequest>() {
             @Override
             public void onResponse(EstadoRequest response) {
@@ -154,7 +177,7 @@ public class RequestActivity extends AppCompatActivity {
                 textView.setText(message);
             }
         },"GET");
-        requestTask.execute("https://maps.googleapis.com/maps/api/geocode/json?latlng=1,1");
+        requestTask.execute("https://api.myjson.com/bins/44pyf");
     }
 
     public void requesVolleyGet(){
