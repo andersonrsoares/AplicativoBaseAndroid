@@ -4,8 +4,10 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -68,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = mEmailView.getText().toString();
+                final String email = mEmailView.getText().toString();
                 final String password = mPasswordView.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
@@ -99,7 +101,10 @@ public class LoginActivity extends AppCompatActivity {
                                     String username = usernameFromEmail(authResult.getUser().getEmail());
 
                                     // Write new user
-                                    writeNewUser(authResult.getUser().getUid(), username);
+                                    writeNewUser(authResult.getUser().getUid(), username,email);
+
+                                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+                                    preferences.edit().putString("token",authResult.getUser().getUid()).commit();
 
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
@@ -184,11 +189,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // [START basic_write]
-    private void writeNewUser(String userId, String name) {
+    private void writeNewUser(String userId, String name,String email) {
         User user = new User();
         user.setName(name);
+        user.setEmail(email);
 
         database.child("users").child(userId).setValue(user);
+
     }
     // [END basic_write]
 
