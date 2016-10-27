@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -56,7 +57,7 @@ import java.util.Arrays;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements  GoogleApiClient.OnConnectionFailedListener{
+public class LoginActivity extends AppCompatActivity implements  GoogleApiClient.OnConnectionFailedListener,GoogleApiClient.ConnectionCallbacks{
 
 
 
@@ -110,7 +111,9 @@ public class LoginActivity extends AppCompatActivity implements  GoogleApiClient
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
-
+        mGoogleApiClient.registerConnectionCallbacks(this);
+        if(!mGoogleApiClient.isConnected())
+            mGoogleApiClient.connect();
         // Set up the login form.
         mEmailView = (EditText) findViewById(R.id.email);
 
@@ -445,6 +448,16 @@ public class LoginActivity extends AppCompatActivity implements  GoogleApiClient
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
 
     }
 }
