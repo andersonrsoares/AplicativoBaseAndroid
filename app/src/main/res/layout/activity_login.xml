@@ -73,6 +73,25 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/facebook"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Login com Facebook"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/google"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Login com Google"
+                android:textStyle="bold" />
+
+
+            <Button
                 android:id="@+id/register_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
