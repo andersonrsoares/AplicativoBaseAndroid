@@ -97,6 +97,7 @@ public class LoginActivity extends AppCompatActivity implements  GoogleApiClient
             return;
         }
 
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         FBKeyHash.getHash(this);
 
