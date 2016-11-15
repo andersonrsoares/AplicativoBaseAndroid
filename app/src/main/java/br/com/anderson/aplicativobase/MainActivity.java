@@ -3,12 +3,20 @@ package br.com.anderson.aplicativobase;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ImageSpan;
+import android.text.style.LeadingMarginSpan;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -59,12 +67,31 @@ public class MainActivity extends AppCompatActivity
     EditText message;
     TextView text;
     GoogleApiClient  mGoogleApiClient;
+    TextView textteste;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        textteste = (TextView) findViewById(R.id.textteste);
+
+
+        final String textto = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi asdfdff s"
+        +"                   ";
+      /*  SpannableStringBuilder sb = new SpannableStringBuilder();
+        sb.append(textto);
+        int size = textto.length();
+        LeadingMarginSpan  marginSpan = new LeadingMarginSpan.Standard(0,textto.length());
+        sb.setSpan(marginSpan,textto.length()-30,textto.length(), 0);*/
+        textteste.setText(textto);
+       // SpannableString mSpannableString = new SpannableString(textto);
+      //  mSpannableString.setSpan(new CustomLeadingMargin(3, leftMargin), 0, mSpannableString.length(), 0);
+
+        ImageSpan
+
+    //    textteste.setText(spannableString);
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -314,5 +341,32 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onConnectionSuspended(int i) {
 
+    }
+
+    class CustomLeadingMargin implements LeadingMarginSpan.LeadingMarginSpan2 {
+
+        private int numberOfLines;
+        private int marginSpace;
+
+        CustomLeadingMargin(int numberOfLines, int marginSpace) {
+            this.numberOfLines = numberOfLines;
+            this.marginSpace = marginSpace;
+        }
+
+        @Override
+        public int getLeadingMargin(boolean firstLineFlag) {
+            return firstLineFlag ? marginSpace : 0;
+        }
+
+        @Override
+        public int getLeadingMarginLineCount() {
+            return numberOfLines;
+        }
+
+        @Override
+        public void drawLeadingMargin(Canvas c, Paint p, int x, int dir,
+                                                       int top, int baseline, int bottom, CharSequence text,
+                                                       int start, int end, boolean first, Layout layout) {
+        }
     }
 }
