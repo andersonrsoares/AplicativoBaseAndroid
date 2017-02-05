@@ -315,9 +315,15 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
-        } else if (id == R.id.contatos) {
+        } else
+        if (id == R.id.contatos) {
             Intent intent = new Intent();
             intent.setClass(getBaseContext(), ContatosActivity.class);
+            startActivity(intent);
+        }else
+        if (id == R.id.link) {
+            Intent intent = new Intent();
+            intent.setClass(getBaseContext(), WebViewLinkActivity.class);
             startActivity(intent);
         }
 

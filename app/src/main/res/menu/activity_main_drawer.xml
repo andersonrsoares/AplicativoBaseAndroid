@@ -18,6 +18,11 @@
             android:id="@+id/contatos"
             android:icon="@drawable/ic_menu_manage"
             android:title="Contatos" />
+
+        <item
+            android:id="@+id/link"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Link Intent" />
     </group>
 
     <item android:title="Communicate">
