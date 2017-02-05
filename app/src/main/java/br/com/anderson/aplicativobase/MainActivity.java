@@ -89,8 +89,6 @@ public class MainActivity extends AppCompatActivity
        // SpannableString mSpannableString = new SpannableString(textto);
       //  mSpannableString.setSpan(new CustomLeadingMargin(3, leftMargin), 0, mSpannableString.length(), 0);
 
-        ImageSpan
-
     //    textteste.setText(spannableString);
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
