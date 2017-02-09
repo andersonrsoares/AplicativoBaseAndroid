@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,  GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
 
     private DatabaseReference mFirebaseDatabaseReference;
-
     FirebaseAuth auth;
     EditText message;
     TextView text;
