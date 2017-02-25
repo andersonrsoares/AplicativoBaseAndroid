@@ -105,6 +105,7 @@ public class LoginActivity extends AppCompatActivity implements  GoogleApiClient
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .requestIdToken(getString(R.string.default_web_client_id))
+              //  .requestIdToken("1020884024809-ssmag4285av8guocbr1622ijdrlc8s28.apps.googleusercontent.com")
                 .build();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -291,7 +292,7 @@ public class LoginActivity extends AppCompatActivity implements  GoogleApiClient
         super.onActivityResult(requestCode, resultCode, data);
         // Result returned from launching the Intent from
         //   GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == RC_SIGN_IN && resultCode ==RESULT_OK) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
                 final GoogleSignInAccount acct = result.getSignInAccount();
@@ -327,7 +328,8 @@ public class LoginActivity extends AppCompatActivity implements  GoogleApiClient
             }else{
                 Toast.makeText(this, "Ocorreu um erro ao logar com o Google", Toast.LENGTH_SHORT).show();
             }
-        }else
+        }
+        else
         if(callbackManager != null)
             callbackManager.onActivityResult(requestCode, resultCode, data);
     }
